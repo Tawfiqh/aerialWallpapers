@@ -176,7 +176,7 @@ if generate_thumbnails:
             get_thumbnail(asset['id'], url)
 
 
-# In[10]:
+# In[11]:
 
 
 markdown_output = []
@@ -225,7 +225,8 @@ for asset in parsed_assets:
             new_line = "[🎬 Watch 4K-HDR ](" + asset['url-4K-HDR'] +")   "
             markdown_output.append(new_line)
 
-    markdown_output.append("* * *");    markdown_output.append("   ");    markdown_output.append("   ")
+#     markdown_output.append("* * *");    
+    markdown_output.append("   ");    markdown_output.append("   ")
     
     
 output_markdown_file = "list_of_files_and_titles.md"
