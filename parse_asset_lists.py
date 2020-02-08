@@ -11,7 +11,6 @@
 # In[2]:
 
 
-import pandas as pd
 import json
 
 
@@ -139,27 +138,20 @@ with open('output_parsed_file_list.json', 'w', encoding='utf-8') as f:
     json.dump(parsed_assets, f, ensure_ascii=False, indent=4)
 
 
-# In[ ]:
+# In[6]:
 
 
-import os
 import subprocess
-
-subprocess.call(['ffmpeg', '-i', 'picture%d0.png', 'output.avi'])
-subprocess.call(['ffmpeg', '-i', 'output.avi', '-t', '5', 'out.gif'])
 
 def get_thumbnail(vid_id, url):
     print(url);
     subprocess.call(['ffmpeg', "-ss" ,"00:00:00" ,'-i', url, "-vframes", "1", '-q:v', '1', "thumbnails/"+vid_id+".jpeg"])
 
-
-        
-#         ffmpeg -i 009_C009_t9_6M_tag0.mov -r 0.1 -q:v10 output_%04d.jepg
-
     
 
-generate_thumnails = True;
-if generate_thumnails:
+generate_thumbnails = False;
+
+if generate_thumbnails:
     for asset in parsed_assets:
         url = ""
         if "url" in asset:
@@ -184,7 +176,7 @@ if generate_thumnails:
             get_thumbnail(asset['id'], url)
 
 
-# In[9]:
+# In[7]:
 
 
 markdown_output = []
@@ -217,6 +209,7 @@ for asset in parsed_assets:
 
 
     if "url-1080-HDR" in asset or "url-4K-HDR" in asset:
+        markdown_output.append(" ")
         markdown_output.append("#### HDR")
         if "url-1080-HDR" in asset:
             new_line = "[🎬 Watch 1080-HDR ](" + asset['url-1080-HDR'] +")   "
@@ -227,11 +220,13 @@ for asset in parsed_assets:
             new_line = "[🎬 Watch 4K-HDR ](" + asset['url-4K-HDR'] +")   "
             markdown_output.append(new_line)
 
+    markdown_output.append("   ");    markdown_output.append("   ");    markdown_output.append("   ")
     
     
-with open('list_of_files_and_titles.md', 'w') as f:
+output_markdown_file = "list_of_files_and_titles.md"
+with open(output_markdown_file, 'w') as f:
     f.writelines("%s\n" % l for l in markdown_output)
-    print("finished writing to md file")
+    print("Finished writing to md file:",output_markdown_file)
 
 
 # In[ ]:

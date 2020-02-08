@@ -13132,8 +13132,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">json</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 </pre></div>
 
     </div>
@@ -13309,27 +13308,20 @@ tvos 13
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">subprocess</span>
-
-<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;picture</span><span class="si">%d</span><span class="s1">0.png&#39;</span><span class="p">,</span> <span class="s1">&#39;output.avi&#39;</span><span class="p">])</span>
-<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;output.avi&#39;</span><span class="p">,</span> <span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;out.gif&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
 
 <span class="k">def</span> <span class="nf">get_thumbnail</span><span class="p">(</span><span class="n">vid_id</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
     <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">,</span> <span class="s2">&quot;-ss&quot;</span> <span class="p">,</span><span class="s2">&quot;00:00:00&quot;</span> <span class="p">,</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;-vframes&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s1">&#39;-q:v&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s2">&quot;thumbnails/&quot;</span><span class="o">+</span><span class="n">vid_id</span><span class="o">+</span><span class="s2">&quot;.jpeg&quot;</span><span class="p">])</span>
 
-
-        
-<span class="c1">#         ffmpeg -i 009_C009_t9_6M_tag0.mov -r 0.1 -q:v10 output_%04d.jepg</span>
-
     
 
-<span class="n">generate_thumnails</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
-<span class="k">if</span> <span class="n">generate_thumnails</span><span class="p">:</span>
+<span class="n">generate_thumbnails</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="n">generate_thumbnails</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">parsed_assets</span><span class="p">:</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;url&quot;</span> <span class="ow">in</span> <span class="n">asset</span><span class="p">:</span>
@@ -13358,111 +13350,10 @@ tvos 13
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_GL_G004_C010_v03_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_DB_D011_D009_SIGNCMP_v15_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_LA_A005_C009_v05_t9_6M.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_HK_B005_C011_t9_6M_tag0.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_HK_H004_C008_v10_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_LA_A009_C009_t9_6M_tag0.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_CH_C002_C005_PSNK_v05_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_GL_G010_C006_v08_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_LW_L001_C006_t9_6M_tag0.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_DB_D011_C010_v10_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/plate_G002_C002_BG_t9_6M_HB_tag0.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_CH_C007_C011_PSNK_v02_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_LA_A006_C008_t9_6M_HB_tag0.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_DB_D001_C001_v03_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_HK_H004_C010_4k_v01_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_LA_A008_C004_ALT_v33_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_DB_D002_C003_t9_6M_HB_tag0.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_CH_C007_C004_PSNK_v02_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_DB_D001_C005_t9_6M_HB_tag0.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_HK_H004_C013_t9_6M_HB_tag0.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/comp_DB_D008_C010_v04_6Mbps.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b1-4.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b2-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b2-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b2-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b2-4.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b3-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b3-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b3-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b4-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b4-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b4-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b5-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b5-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b5-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b6-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b6-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b6-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b6-4.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b7-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b7-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b7-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b10-4.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b8-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b8-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b9-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b9-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b9-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b10-1.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b10-2.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b10-3.mov
-http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b8-1.mov
-https://sylvan.apple.com/Aerials/2x/Videos/LA_A006_C008_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/LW_L001_C006_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/DB_D008_C010_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_LA_A009_C009_PSNK_v02_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/HK_B005_C011_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/DB_D001_C001_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/LA_A005_C009_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/DB_D001_C005_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/LA_A008_C004_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/GL_G004_C010_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C010_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/HK_H004_C013_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/LA_A011_C003_2K_SDR_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_DB_D011_C010_PSNK_DENOISE_v19_SDR_PS_20180914_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_A114_C001_0305OT_v10_SDR_FINAL_22062018_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_GL_G004_C010_PSNK_v04_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_N008_C003_PS_v01_SDR_PS_20180925_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_GMT026_363A_103NC_E1027_KOREA_JAPAN_NIGHT_v18_SDR_PS_20180907_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_LA_A006_C008_PSNK_ALL_LOGOS_v10_SDR_PS_FINAL_20180801_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_A015_C018_0128ZS_v03_SDR_PS_FINAL_20180709__SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_GMT329_113NC_396B_1105_ITALY_v03_SDR_FINAL_20180706_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_HK_B005_C011_PSNK_v16_SDR_PS_20180914_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_L007_C007_PS_v01_SDR_PS_20180925_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_LA_A008_C004_ALTB_ED_FROM_FLAME_RETIME_v46_SDR_PS_20180917_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_GL_G010_C006_PSNK_NOSUN_v12_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_A108_C001_v09_SDR_FINAL_22062018_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_N008_C009_PS_v01_SDR_PS_20180925_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_GMT306_139NC_139J_3066_CALI_TO_VEGAS_v08_SDR_PS_20180824_SDR_2K_HEVC.mov
-https://sylvan.apple.com/Aerials/2x/Videos/comp_HK_H004_C010_PSNK_v08_SDR_PS_20181009_SDR_2K_HEVC.mov
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">markdown_output</span> <span class="o">=</span> <span class="p">[]</span>
@@ -13495,6 +13386,7 @@ https://sylvan.apple.com/Aerials/2x/Videos/comp_HK_H004_C010_PSNK_v08_SDR_PS_201
 
 
     <span class="k">if</span> <span class="s2">&quot;url-1080-HDR&quot;</span> <span class="ow">in</span> <span class="n">asset</span> <span class="ow">or</span> <span class="s2">&quot;url-4K-HDR&quot;</span> <span class="ow">in</span> <span class="n">asset</span><span class="p">:</span>
+        <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
         <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;#### HDR&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="s2">&quot;url-1080-HDR&quot;</span> <span class="ow">in</span> <span class="n">asset</span><span class="p">:</span>
             <span class="n">new_line</span> <span class="o">=</span> <span class="s2">&quot;[🎬 Watch 1080-HDR ](&quot;</span> <span class="o">+</span> <span class="n">asset</span><span class="p">[</span><span class="s1">&#39;url-1080-HDR&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s2">&quot;)   &quot;</span>
@@ -13505,11 +13397,13 @@ https://sylvan.apple.com/Aerials/2x/Videos/comp_HK_H004_C010_PSNK_v08_SDR_PS_201
             <span class="n">new_line</span> <span class="o">=</span> <span class="s2">&quot;[🎬 Watch 4K-HDR ](&quot;</span> <span class="o">+</span> <span class="n">asset</span><span class="p">[</span><span class="s1">&#39;url-4K-HDR&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s2">&quot;)   &quot;</span>
             <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_line</span><span class="p">)</span>
 
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">);</span>    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">);</span>    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">)</span>
     
     
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;list_of_files_and_titles.md&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="n">output_markdown_file</span> <span class="o">=</span> <span class="s2">&quot;list_of_files_and_titles.md&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_markdown_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">markdown_output</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;finished writing to md file&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished writing to md file:&quot;</span><span class="p">,</span><span class="n">output_markdown_file</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13526,7 +13420,7 @@ https://sylvan.apple.com/Aerials/2x/Videos/comp_HK_H004_C010_PSNK_v08_SDR_PS_201
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>finished writing to md file
+<pre>Finished writing to md file: list_of_files_and_titles.md
 </pre>
 </div>
 </div>
