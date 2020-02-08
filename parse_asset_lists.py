@@ -176,7 +176,7 @@ if generate_thumbnails:
             get_thumbnail(asset['id'], url)
 
 
-# In[7]:
+# In[10]:
 
 
 markdown_output = []
@@ -189,6 +189,11 @@ for asset in parsed_assets:
     new_line = "## " + asset['accessibilityLabel'] + " _("+ asset['id'] +")_"
     markdown_output.append(new_line)
     
+    # ![Alt text](/path/to/img.jpg "Optional title")
+    # images in markdown.
+    new_line = "![{}]({} '{}')   ".format(asset['accessibilityLabel'], "thumbnails/"+asset['id']+".jpeg", asset['accessibilityLabel'])
+    markdown_output.append(new_line)
+
 
     if "url" in asset:
         new_line = "[🎬 Watch ](" + asset['url'] +")   "
@@ -220,7 +225,7 @@ for asset in parsed_assets:
             new_line = "[🎬 Watch 4K-HDR ](" + asset['url-4K-HDR'] +")   "
             markdown_output.append(new_line)
 
-    markdown_output.append("   ");    markdown_output.append("   ");    markdown_output.append("   ")
+    markdown_output.append("* * *");    markdown_output.append("   ");    markdown_output.append("   ")
     
     
 output_markdown_file = "list_of_files_and_titles.md"
