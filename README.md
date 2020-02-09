@@ -5,9 +5,9 @@ Amazing footage from Apple, mostly drone footage of various cities. Also satelli
 Built off of https://github.com/JohnCoates/Aerial  
 
 # Usage
-The final result is available: https://aerial-screensavers.netlify.com
+The final result is available here: https://aerial-screensavers.netlify.com
 
-Can also build it yourself with
+Can  build it yourself with
 ```sh
 ./run.sh; open index.html
 ```
@@ -17,9 +17,9 @@ Requires:
 - cmark
 
 
-Run.sh first calls download_resources.sh that uses curl to fetch the JSON lists of URLs.
+`run.sh` first calls `download_resources.sh` that uses curl to fetch the JSON lists of URLs.
 
-parse_asset_lists.py then parses this list.  
+`parse_asset_lists.py` then parses this list.  
 
 It has a setting inside to also download thumbnails.
 
@@ -29,4 +29,4 @@ Markdown is used as it's a little bit easier than crafting all of the HTML. But 
 
 The markdown file is compiled into HTML. It then has an HTML header/footer appended to it. This footer references the CSS.
 
-The final web-page is output as index.html.
+The final web-page is output as `index.html`.
