@@ -1,10 +1,12 @@
 body{
-    color: #332222;
-    background: #FFEFBA;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    /* color: #332222; */
+    color: #020125;
+
+    background-image: linear-gradient(#ffe5da, #ffbfaf);
+    /* background-image: linear-gradient(to bottom, #ffecd2 0%, #fcb69f 100%); */
+
     background-attachment: fixed;
+
 }
 
 html{
@@ -56,7 +58,7 @@ img{
 
     border: 1px solid #ffffff;
     background: rgba(240,240,255, 0.45);
-
+    background: rgba(252, 248, 239, 0.65)
 }
 
 
@@ -66,11 +68,26 @@ a {
     display: inline-block;
     border-radius: 7px;
     text-align: center;
-    border: 1px solid rgb(187, 223, 253);
-    background: rgba(112, 206, 236, 0.18);
     margin-bottom: 15px;
 
+    border: 1px solid rgb(124, 131, 165);
+    background: rgba(250, 251, 255, 0.5);
 }
+
+a:visited{
+    color: rgb(10, 11, 131);
+    border-color: rgb(2, 1, 37);
+}
+
+a:link {
+    color: rgb(81, 122, 224);
+    border-color: rgb(150, 174, 236);
+}
+
+/* a:hover {
+    color:white;
+    border-color:white;
+} */
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
