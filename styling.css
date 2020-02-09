@@ -1,61 +1,23 @@
 body{
-    color: white;
-    background: #0F2027;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-attachment: fixed;]
-
+    color: #332222;
+    background: #FFEFBA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    background-attachment: fixed;
 }
 
 html{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-h1, h2, h3, h4, h5 {
-    /* font-family: 'Raleway', sans-serif; */
-}
-
 h2 em{
     font-size: 14px;
-}
-
-p{
-
-}
-
-
-a:link {
-    color: rgb(187, 223, 253);
-    border-color: rgb(187, 223, 253);
-}
-
-a:visited {
-    color: #eeeadd;
-    border-color: #eeeadd;
-}
-
-a:hover {
-    color:white;
-    border-color:white;
 }
 
 img{
     width: 85%;
     margin-bottom: 20px;
-}
-
-a {
-
-    border: 1px solid white;
-    margin: 5px;
-    padding: 11px 15px;
-    display: inline-block;
-    border: 1px solid rgb(187, 223, 253);
-    border-radius: 7px;
-    text-align: center;
-    background: rgba(112, 206, 236, 0.18);
-    margin-bottom: 15px;
-
 }
 
 .asset_container{
@@ -65,16 +27,6 @@ a {
     justify-content: space-around;
 }
 
-
-.asset {
-    border: 1px solid #a2bad8;
-    border-radius: 7px;
-    text-align: center;
-    background: rgba(240,240,255, 0.05);
-    width: 500px;
-    margin: 10px;
-
-}
 
 .button_container{
     display: flex;
@@ -95,3 +47,72 @@ a {
     font-style: italic;
     margin-bottom: 15px;
 }
+
+.asset {
+    border-radius: 7px;
+    text-align: center;
+    width: 500px;
+    margin: 10px;
+
+    border: 1px solid #ffffff;
+    background: rgba(240,240,255, 0.45);
+
+}
+
+
+a {
+    margin: 5px;
+    padding: 11px 15px;
+    display: inline-block;
+    border-radius: 7px;
+    text-align: center;
+    border: 1px solid rgb(187, 223, 253);
+    background: rgba(112, 206, 236, 0.18);
+    margin-bottom: 15px;
+
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+
+    body{
+        color: white;
+        background: #0F2027;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+
+    a:link {
+        color: rgb(187, 223, 253);
+        border-color: rgb(187, 223, 253);
+    }
+
+    a:visited {
+        color: #eeeadd;
+        border-color: #eeeadd;
+    }
+
+    a:hover {
+        color:white;
+        border-color:white;
+    }
+
+
+    a {
+
+        border: 1px solid rgb(187, 223, 253);
+        background: rgba(112, 206, 236, 0.18);
+
+    }
+
+    .asset {
+        border: 1px solid #86b6bb;
+        background: rgba(240,240,255, 0.05);
+    }
+
+}
+
+
+
+/* TODO non-dark-mode*/
