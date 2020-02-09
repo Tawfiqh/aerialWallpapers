@@ -15,23 +15,83 @@ h1, h2, h3, h4, h5 {
     /* font-family: 'Raleway', sans-serif; */
 }
 
+h2 em{
+    font-size: 14px;
+}
+
 p{
 
 }
 
 
 a:link {
-    color: wheat;
+    color: rgb(187, 223, 253);
+    border-color: rgb(187, 223, 253);
 }
 
 a:visited {
     color: #eeeadd;
+    border-color: #eeeadd;
 }
 
 a:hover {
     color:white;
+    border-color:white;
 }
 
 img{
-    width: 50%;
+    width: 85%;
+    margin-bottom: 20px;
+}
+
+a {
+
+    border: 1px solid white;
+    margin: 5px;
+    padding: 11px 15px;
+    display: inline-block;
+    border: 1px solid rgb(187, 223, 253);
+    border-radius: 7px;
+    text-align: center;
+    background: rgba(112, 206, 236, 0.18);
+    margin-bottom: 15px;
+
+}
+
+.asset_container{
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.asset {
+    border: 1px solid #a2bad8;
+    border-radius: 7px;
+    text-align: center;
+    background: rgba(240,240,255, 0.05);
+    width: 500px;
+    margin: 10px;
+
+}
+
+.button_container{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.button_container p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0;
+}
+
+.button_container h4{
+    font-style: italic;
+    margin-bottom: 15px;
 }

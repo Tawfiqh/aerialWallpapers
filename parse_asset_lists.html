@@ -13115,42 +13115,19 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Iterate over keys/values for the resources.</span>
-<span class="c1"># If the key is &quot;assets&quot; - then parse the value</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-</pre></div>
 
-    </div>
-</div>
-</div>
+<span class="c1"># Read the JSON files into an array so we can iterate over them</span>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tvOsReleaseJSON</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tvOsReleaseJSON</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">min_os</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">max_os</span> <span class="o">=</span> <span class="mi">13</span>
 
-<span class="k">for</span> <span class="n">os_number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_os</span><span class="p">,</span><span class="n">max_os</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">os_number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_os</span><span class="p">,</span> <span class="n">min_os</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tvos&#39;</span><span class="p">,</span><span class="n">os_number</span><span class="p">)</span>
     
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./resources/tvos&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">os_number</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
@@ -13174,10 +13151,10 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>tvos 10
-tvos 11
+<pre>tvos 13
 tvos 12
-tvos 13
+tvos 11
+tvos 10
 </pre>
 </div>
 </div>
@@ -13188,10 +13165,13 @@ tvos 13
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># `url-1080-H264` (1080p H.264, most compatible format), </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Setup some functions to parse the JSON that we read in previously.</span>
+
+
+<span class="c1"># `url-1080-H264` (1080p H.264, most compatible format), </span>
 <span class="c1"># `url-1080-SDR`  (1080p HEVC, better quality, requires a recent Mac for hardware decoding)</span>
 <span class="c1"># `url-4K-SDR`    (4K HEVC)</span>
 
@@ -13200,7 +13180,8 @@ tvos 13
 
 <span class="c1"># [&#39;url&#39;, &#39;accessibilityLabel&#39;, &#39;type&#39;, &#39;id&#39;, &#39;timeOfDay&#39;, &#39;url-1080-SDR&#39;, &#39;url-1080-HDR&#39;, &#39;url-4K-SDR&#39;, &#39;url-4K-HDR&#39;, &#39;pointsOfInterest&#39;, &#39;url-1080-H264&#39;]</span>
 <span class="n">available_keys</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># Helpful for finding the list of available keys. </span>
+<span class="c1"># Gets the list of keys from each asset objects.</span>
+<span class="c1"># Helpful for finding the list of available keys - i.e features available </span>
 <span class="k">def</span> <span class="nf">parse_keys_for_asset_list</span><span class="p">(</span><span class="n">assets</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">assets</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">asset</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -13211,15 +13192,12 @@ tvos 13
 
 
 
-<span class="c1"># Each object has some of the following attributes (at least):</span>
+<span class="c1"># Each asset object in the assets list has some of the following attributes (at least):</span>
 <span class="c1"># [&quot;id&quot;, &quot;url-1080-SDR&quot;, &quot;url-1080-HDR&quot;, &quot;url-4K-SDR&quot;, &quot;url-4K-HDR&quot;, &quot;accessibilityLabel&quot;] </span>
-
-
-
 <span class="c1"># accessibilityLabel is the readable one - i.e a decent title.</span>
 <span class="k">def</span> <span class="nf">_parse_asset_list</span><span class="p">(</span><span class="n">assets</span><span class="p">):</span>
-<span class="c1">#     print(&quot;assets found&quot;)</span>
-<span class="c1">#     print(type(assets)) # Assets is always an array of objects, when first tested.</span>
+<span class="c1">#     print(type(assets)) </span>
+    <span class="c1"># Assets is always an array of objects, (found when first run)</span>
 
     <span class="n">parse_keys_for_asset_list</span><span class="p">(</span><span class="n">assets</span><span class="p">)</span>
     <span class="n">uniform_mode</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="c1">#set this to True to only output url, accesibilityLabel and URLs.</span>
@@ -13282,10 +13260,11 @@ tvos 13
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parsed_assets</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Iterate over the list of JSON files and parse each one. Each one should somewhere in it have a list of assets. </span>
+<span class="c1"># We just search through the keys until we find that list of assets and then we can parse it.</span>
 
 <span class="n">parsed_assets</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">tvos</span> <span class="ow">in</span> <span class="n">tvOsReleaseJSON</span><span class="p">:</span>
@@ -13293,32 +13272,52 @@ tvos 13
     
     
 <span class="c1"># print(available_keys)</span>
-<span class="c1"># print(parsed_assets)</span>
 <span class="n">parsed_assets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">parsed_assets</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="c1"># print(json.dumps(parsed_assets, indent=4))</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output_parsed_file_list.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">parsed_assets</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;succesfully output_parsed_file_list.json&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>succesfully output_parsed_file_list.json
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
 
+<span class="c1"># Requires FFMPEG</span>
+<span class="c1"># https://stackoverflow.com/questions/27568254/how-to-extract-1-screenshot-for-a-video-with-ffmpeg-at-a-given-time</span>
 <span class="k">def</span> <span class="nf">get_thumbnail</span><span class="p">(</span><span class="n">vid_id</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
     <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">,</span> <span class="s2">&quot;-ss&quot;</span> <span class="p">,</span><span class="s2">&quot;00:00:00&quot;</span> <span class="p">,</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;-vframes&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s1">&#39;-q:v&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s2">&quot;thumbnails/&quot;</span><span class="o">+</span><span class="n">vid_id</span><span class="o">+</span><span class="s2">&quot;.jpeg&quot;</span><span class="p">])</span>
 
     
-
+<span class="c1"># Enable this to grab and output thumbnails (to the thumbnails directory) but takes a while</span>
 <span class="n">generate_thumbnails</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
 
 <span class="k">if</span> <span class="n">generate_thumbnails</span><span class="p">:</span>
@@ -13353,7 +13352,7 @@ tvos 13
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">markdown_output</span> <span class="o">=</span> <span class="p">[]</span>
@@ -13361,8 +13360,13 @@ tvos 13
 <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;# Aerial wallpapers   &quot;</span><span class="p">)</span>
 <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Amazing footage from Apple, mostly drone footage of various cities. Also satellite footage and underwater footage too! Built off of https://github.com/JohnCoates/Aerial  &quot;</span><span class="p">)</span>
 
+<span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;asset_container&quot; markdown=&quot;1&quot;&gt;  &#39;</span><span class="p">)</span>
+<span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">parsed_assets</span><span class="p">:</span>
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;asset&quot; markdown=&quot;1&quot;&gt;  &#39;</span><span class="p">)</span>
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
+    
     <span class="n">new_line</span> <span class="o">=</span> <span class="s2">&quot;## &quot;</span> <span class="o">+</span> <span class="n">asset</span><span class="p">[</span><span class="s1">&#39;accessibilityLabel&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; _(&quot;</span><span class="o">+</span> <span class="n">asset</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s2">&quot;)_&quot;</span>
     <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_line</span><span class="p">)</span>
     
@@ -13370,7 +13374,9 @@ tvos 13
     <span class="c1"># images in markdown.</span>
     <span class="n">new_line</span> <span class="o">=</span> <span class="s2">&quot;![</span><span class="si">{}</span><span class="s2">](</span><span class="si">{}</span><span class="s2"> &#39;</span><span class="si">{}</span><span class="s2">&#39;)   &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">asset</span><span class="p">[</span><span class="s1">&#39;accessibilityLabel&#39;</span><span class="p">],</span> <span class="s2">&quot;thumbnails/&quot;</span><span class="o">+</span><span class="n">asset</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;.jpeg&quot;</span><span class="p">,</span> <span class="n">asset</span><span class="p">[</span><span class="s1">&#39;accessibilityLabel&#39;</span><span class="p">])</span>
     <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_line</span><span class="p">)</span>
-
+    
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;button_container&quot; markdown=&quot;1&quot;&gt;  &#39;</span><span class="p">)</span>
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="s2">&quot;url&quot;</span> <span class="ow">in</span> <span class="n">asset</span><span class="p">:</span>
         <span class="n">new_line</span> <span class="o">=</span> <span class="s2">&quot;[🎬 Watch ](&quot;</span> <span class="o">+</span> <span class="n">asset</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s2">&quot;)   &quot;</span>
@@ -13401,10 +13407,14 @@ tvos 13
         <span class="k">if</span> <span class="s2">&quot;url-4K-HDR&quot;</span> <span class="ow">in</span> <span class="n">asset</span><span class="p">:</span>
             <span class="n">new_line</span> <span class="o">=</span> <span class="s2">&quot;[🎬 Watch 4K-HDR ](&quot;</span> <span class="o">+</span> <span class="n">asset</span><span class="p">[</span><span class="s1">&#39;url-4K-HDR&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s2">&quot;)   &quot;</span>
             <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_line</span><span class="p">)</span>
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;  &quot;</span><span class="p">)</span>
 
-<span class="c1">#     markdown_output.append(&quot;* * *&quot;);    </span>
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
+    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;  &quot;</span><span class="p">)</span>
     <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">);</span>    <span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">)</span>
-    
+
+<span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
+<span class="n">markdown_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;/div&gt;   &quot;</span><span class="p">)</span>
     
 <span class="n">output_markdown_file</span> <span class="o">=</span> <span class="s2">&quot;list_of_files_and_titles.md&quot;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_markdown_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
