@@ -1,5 +1,5 @@
 # Aerial wallpapers   
-Amazing footage from Apple, mostly drone footage of various cities. Also satellite footage and underwater footage too! Built off of https://github.com/JohnCoates/Aerial  
+Amazing footage from AppleTV default wallpapers. Mostly drone footage of various cities. Features some satellite footage and underwater footage too! Built from https://github.com/Tawfiqh/aerialWallpapers  
 <div class="asset_container" markdown="1">  
   
 <div class="asset" markdown="1">  

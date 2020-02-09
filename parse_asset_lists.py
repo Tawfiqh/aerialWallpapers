@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[22]:
+# In[2]:
 
 
 import json
@@ -23,7 +23,7 @@ for os_number in range(max_os, min_os-1,-1):
 # pandas.read_json('./resources')
 
 
-# In[24]:
+# In[3]:
 
 
 # Setup some functions to parse the JSON that we read in previously.
@@ -111,7 +111,7 @@ def iterate_parse_list_or_array(iterable):
     
 
 
-# In[25]:
+# In[4]:
 
 
 # Iterate over the list of JSON files and parse each one. Each one should somewhere in it have a list of assets. 
@@ -131,7 +131,7 @@ with open('output_parsed_file_list.json', 'w', encoding='utf-8') as f:
     print("succesfully output_parsed_file_list.json")
 
 
-# In[26]:
+# In[5]:
 
 
 import subprocess
@@ -171,13 +171,13 @@ if generate_thumbnails:
             get_thumbnail(asset['id'], url)
 
 
-# In[29]:
+# In[8]:
 
 
 markdown_output = []
 
 markdown_output.append("# Aerial wallpapers   ")
-markdown_output.append("Amazing footage from Apple, mostly drone footage of various cities. Also satellite footage and underwater footage too! Built off of https://github.com/JohnCoates/Aerial  ")
+markdown_output.append("Amazing footage from AppleTV default wallpapers. Mostly drone footage of various cities. Features some satellite footage and underwater footage too! Built from https://github.com/Tawfiqh/aerialWallpapers  ")
 
 markdown_output.append('<div class="asset_container" markdown="1">  ')
 markdown_output.append("  ")
