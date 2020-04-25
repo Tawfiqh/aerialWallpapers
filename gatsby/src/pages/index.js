@@ -1,7 +1,55 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby" // to query for image data
 import JSONData from "../../content/output_parsed_file_list.json"
+import Img from "gatsby-image"
 
-const JSONbuildtime = () => (
+
+const JSONbuildtime = () => {
+
+
+    const imgdata = useStaticQuery(graphql`
+        query {
+          allFile{
+            edges {
+              node {
+                base
+                childImageSharp {
+                  fluid(maxWidth: 1000) {
+                      ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+    `)
+
+    function assetButtonLink(data, key, title){
+        if(data[key]){
+            return (
+              <>
+                <a href={data[key]}>
+                    <span role="img" aria-label="cinema">🎬</span> Watch {title}
+                </a>
+                <br  />
+              </>
+            )
+        }
+    }
+
+    function getImageFromGraphForId(imageId, title, extension="jpeg"){
+        {/* <Img fixed={data.file.childImageSharp.fixed} /> */}
+        {/* <img src={"thumbnails/" +data.id +".jpeg"} alt={data.accessibilityLabel} title={data.accessibilityLabel} /> */}
+
+        var imageData = imgdata.allFile.edges.find(edge =>edge.node.base === imageId);
+
+        return(<div className="image_wrapper">
+                  <Img fluid={imageData.node.childImageSharp.fluid} alt={title} />
+               </div>)
+    }
+
+
+return(
   <div>
 
       <h1>Aerial wallpapers </h1>
@@ -12,25 +60,12 @@ const JSONbuildtime = () => (
 
           {JSONData.map((data, index) => {
 
-              function assetButtonLink(data, key, title){
-                  if(data[key]){
-                      return (
-                        <>
-                          <a href={data[key]}>
-                              <span role="img" aria-label="cinema">🎬</span> Watch {title}
-                          </a>
-                          <br  />
-                        </>
-                      )
-                  }
-              }
-
             return (
             <div className="asset"  key={`asset_${index}`}>
-                <h2>{data.accessibilityLabel} <em>{data.id}</em></h2>
-                <p>
-                    <img src={"thumbnails/" +data.id +".jpeg"} alt={data.accessibilityLabel} title={data.accessibilityLabel} />
-                </p>
+                <h2>{data.accessibilityLabel} <em>({data.id})</em></h2>
+
+                {getImageFromGraphForId(data.id + ".jpeg", data.accessibilityLabel)}
+
 
                 <div className="button_container" >
                     <p>
@@ -56,5 +91,5 @@ const JSONbuildtime = () => (
 
 
   </div>
-)
+)}
 export default JSONbuildtime

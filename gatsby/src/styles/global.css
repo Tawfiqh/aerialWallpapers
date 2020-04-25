@@ -17,6 +17,15 @@ h2 em{
     font-size: 14px;
 }
 
+.image_wrapper{
+
+    width: 85%;
+    margin-bottom: 36px;
+    margin: auto;
+    margin-bottom: 36px;
+
+}
+
 img{
     width: 85%;
     margin-bottom: 20px;
