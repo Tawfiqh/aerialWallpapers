@@ -75,12 +75,13 @@ return(
                     {assetButtonLink(data, "url-1080-H264", "1080p-H264")}
                     </p>
 
-
                     {(data["url-1080-HDR"] || data["url-4K-HDR"]) && <h4>HDR</h4>}
+
                     <p>
                     {assetButtonLink(data, "url-1080-HDR", "1080-HDR")}
                     {assetButtonLink(data, "url-4K-HDR", "4K-HDR ")}
-                </p>
+                    </p>
+                    
                 </div>
             </div>
             )
